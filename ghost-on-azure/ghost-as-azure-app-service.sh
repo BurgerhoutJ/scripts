@@ -88,7 +88,7 @@ az webapp config set --name $WEBAPPNAME \
                      --ftps-state Disabled                                 
 
 #Configure path mappings
-echo "Add some persistant storage to the webapp"
+echo "Add some persistent storage to the webapp"
 az webapp config storage-account add --resource-group $RG --name $WEBAPPNAME \
                                 --account-name $SANAME \
                                 --custom-id $FILESHARECUSTOMID \
