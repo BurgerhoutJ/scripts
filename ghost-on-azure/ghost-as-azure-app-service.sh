@@ -1,15 +1,17 @@
 #Variables
-RG=CATPRDEUWGHOST1RG
-WEBAPPNAME=appcatghostblogtest
-LOCATION=WestEurope
-APPSERVICE=aspcatprdeuwghost
+RG=<resourcegroupname>
+WEBAPPNAME=<webappname>
+LOCATION=<nearestazurelocation>
+APPSERVICE=<appservicename>
 SQLUSER=admin_$RANDOM
-SQLPASS="ZkdFR.Ju4/<}&;PJ*@RDq5.?4BLH]T"
+SQLPASS=<generateastrongpassword>
 SQLSERVERNAME=sqlserver$RANDOM
 PLAN=B1
-SANAME=sacatghosttest
-FILESHARE=sharecatghostfiles
+SANAME=<storageaccountname>
+FILESHARENAME=<azurefilesharename>
+FILESHARECUSTOMID=<customfileshareid>
 SQLSKU=B_Gen5_1
+
 
 #Resource group
 echo "Creating resource group"
@@ -89,8 +91,8 @@ az webapp config set --name $WEBAPPNAME \
 echo "Add some persistant storage to the webapp"
 az webapp config storage-account add --resource-group $RG --name $WEBAPPNAME \
                                 --account-name $SANAME \
-                                --custom-id catghostsharetest \
-                                --share-name $FILESHARE \
+                                --custom-id $FILESHARECUSTOMID \
+                                --share-name $FILESHARENAME \
                                 --access-key $SAKEY \
                                 --storage-type AzureFiles \
                                 --mount-path /var/lib/ghost/content_files
