@@ -23,6 +23,7 @@ $UninstallPackages = @(
     "Microsoft.Office.OneNote"
     "Microsoft.OneConnect"
     "Microsoft.SkypeApp"
+    "Microsoft.windowscommunicationsapps"
     "Microsoft.WindowsFeedbackHub"
     "Microsoft.Xbox.TCUI"
     "Microsoft.XboxApp"
