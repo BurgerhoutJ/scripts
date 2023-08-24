@@ -22,6 +22,7 @@ Set-Content -Path "$($env:ProgramData)\Microsoft\RemoveW10Bloatware\RemoveW10Blo
 
 # List of built-in apps to remove
 $UninstallPackages = @(
+    "Microsoft.BingWeather"
     "Microsoft.Getstarted"
     "Microsoft.GetHelp"
     "Microsoft.Microsoft3DViewer"
@@ -35,6 +36,7 @@ $UninstallPackages = @(
     "Microsoft.WindowsFeedbackHub"
     "Microsoft.Xbox.TCUI"
     "Microsoft.XboxApp"
+    "Microsoft.XboxGameCallableUI"
     "Microsoft.XboxGameOverlay"
     "Microsoft.XboxGamingOverlay"
     "Microsoft.XboxIdentityProvider"
