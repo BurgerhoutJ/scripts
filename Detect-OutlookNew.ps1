@@ -15,7 +15,6 @@ if (Get-AppxPackage -Name *OutlookForWindows*) {
 write-host "Microsoft Outlook (New) found."
 
 exit 1
-
 }
 
 else {
