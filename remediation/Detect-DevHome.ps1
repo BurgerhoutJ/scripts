@@ -2,7 +2,7 @@
 Version: 1.0
 Author: 
 - Jeroen Burgerhout (burgerhout.org)
-Script: Detect-WindowsBackup
+Script: Detect-DevHome
 Description: Script detects the new Dev Home app on Windows 11 23H2.
 Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
 Version 1.0: Init
