@@ -1,0 +1,331 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies(assignments(),settings())/$entity",
+  "@odata.type": "#microsoft.graph.deviceManagementConfigurationPolicy",
+  "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')",
+  "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')",
+  "createdDateTime@odata.type": "#DateTimeOffset",
+  "createdDateTime": "2025-02-21T09:20:45.028727Z",
+  "creationSource": null,
+  "description": "",
+  "lastModifiedDateTime@odata.type": "#DateTimeOffset",
+  "lastModifiedDateTime": "2025-11-07T09:29:14.5206988Z",
+  "name": "dcp_win11_shd_prd_1.0",
+  "platforms@odata.type": "#microsoft.graph.deviceManagementConfigurationPlatforms",
+  "platforms": "windows10",
+  "priorityMetaData": null,
+  "roleScopeTagIds@odata.type": "#Collection(String)",
+  "roleScopeTagIds": [
+    "0"
+  ],
+  "settingCount": 13,
+  "technologies@odata.type": "#microsoft.graph.deviceManagementConfigurationTechnologies",
+  "technologies": "mdm",
+  "id": "b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e",
+  "templateReference": {
+    "@odata.type": "#microsoft.graph.deviceManagementConfigurationPolicyTemplateReference",
+    "templateId": "",
+    "templateFamily@odata.type": "#microsoft.graph.deviceManagementConfigurationTemplateFamily",
+    "templateFamily": "none",
+    "templateDisplayName": null,
+    "templateDisplayVersion": null
+  },
+  "assignments@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/assignments",
+  "assignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/assignments/$ref",
+  "assignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/assignments",
+  "settings@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings",
+  "settings@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings/$ref",
+  "settings@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings",
+  "settings": [
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('0')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('0')",
+      "id": "0",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_accountmodel",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_accountmodel_1",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('0')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('0')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('1')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('1')",
+      "id": "1",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_deletionpolicy",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_deletionpolicy_1",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('1')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('1')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('2')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('2')",
+      "id": "2",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_disklevelcaching",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "simpleSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue",
+          "settingValueTemplateReference": null,
+          "value": 80
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('2')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('2')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('3')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('3')",
+      "id": "3",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_diskleveldeletion",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "simpleSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue",
+          "settingValueTemplateReference": null,
+          "value": 40
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('3')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('3')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('4')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('4')",
+      "id": "4",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_enableaccountmanager",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_enableaccountmanager_true",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('4')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('4')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('5')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('5')",
+      "id": "5",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_enablesharedpcmode",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_enablesharedpcmode_true",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('5')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('5')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('6')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('6')",
+      "id": "6",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_inactivethreshold",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "simpleSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue",
+          "settingValueTemplateReference": null,
+          "value": 30
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('6')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('6')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('7')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('7')",
+      "id": "7",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_maintenancestarttime",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "simpleSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue",
+          "settingValueTemplateReference": null,
+          "value": 1080
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('7')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('7')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('8')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('8')",
+      "id": "8",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_restrictlocalstorage",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_restrictlocalstorage_true",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('8')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('8')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('9')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('9')",
+      "id": "9",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_setedupolicies",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_setedupolicies_false",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('9')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('9')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('10')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('10')",
+      "id": "10",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_setpowerpolicies",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_setpowerpolicies_true",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('10')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('10')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('11')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('11')",
+      "id": "11",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_signinonresume",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "choiceSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+          "settingValueTemplateReference": null,
+          "value": "vendor_msft_sharedpc_signinonresume_true",
+          "children@odata.type": "#Collection(microsoft.graph.deviceManagementConfigurationSettingInstance)",
+          "children": []
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('11')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('11')/settingDefinitions"
+    },
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "@odata.id": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('12')",
+      "@odata.editLink": "deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('12')",
+      "id": "12",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingInstance",
+        "settingDefinitionId": "vendor_msft_sharedpc_sleeptimeout",
+        "settingInstanceTemplateReference": null,
+        "auditRuleInformation": null,
+        "simpleSettingValue": {
+          "@odata.type": "#microsoft.graph.deviceManagementConfigurationIntegerSettingValue",
+          "settingValueTemplateReference": null,
+          "value": 0
+        }
+      },
+      "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('12')/settingDefinitions/$ref",
+      "settingDefinitions@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/settings('12')/settingDefinitions"
+    }
+  ],
+  "#microsoft.graph.assign": {
+    "title": "microsoft.graph.assign",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.assign"
+  },
+  "#microsoft.graph.clearEnrollmentTimeDeviceMembershipTarget": {
+    "title": "microsoft.graph.clearEnrollmentTimeDeviceMembershipTarget",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.clearEnrollmentTimeDeviceMembershipTarget"
+  },
+  "#microsoft.graph.createCopy": {
+    "title": "microsoft.graph.createCopy",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.createCopy"
+  },
+  "#microsoft.graph.reorder": {
+    "title": "microsoft.graph.reorder",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.reorder"
+  },
+  "#microsoft.graph.retrieveEnrollmentTimeDeviceMembershipTarget": {
+    "title": "microsoft.graph.retrieveEnrollmentTimeDeviceMembershipTarget",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.retrieveEnrollmentTimeDeviceMembershipTarget"
+  },
+  "#microsoft.graph.setEnrollmentTimeDeviceMembershipTarget": {
+    "title": "microsoft.graph.setEnrollmentTimeDeviceMembershipTarget",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.setEnrollmentTimeDeviceMembershipTarget"
+  },
+  "#microsoft.graph.retrieveLatestUpgradeDefaultBaselinePolicy": {
+    "title": "microsoft.graph.retrieveLatestUpgradeDefaultBaselinePolicy",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b9c4f4d9-05e1-42c9-9aab-400fae3fcd7e')/microsoft.graph.retrieveLatestUpgradeDefaultBaselinePolicy"
+  }
+}
