@@ -1,0 +1,59 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/windowsAutopilotDeploymentProfiles(assignments())/$entity",
+  "@odata.type": "#microsoft.graph.azureADWindowsAutopilotDeploymentProfile",
+  "@odata.id": "deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')",
+  "@odata.editLink": "deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile",
+  "id": "b8616ae0-09d4-482d-9e21-8ba9255bb174",
+  "displayName": "ap_win_device_sharedpc",
+  "description": "Deployment profile used for shared pc devices",
+  "language": "os-default",
+  "locale": "os-default",
+  "createdDateTime@odata.type": "#DateTimeOffset",
+  "createdDateTime": "2025-02-21T09:21:50.1946485Z",
+  "lastModifiedDateTime@odata.type": "#DateTimeOffset",
+  "lastModifiedDateTime": "2025-10-26T12:44:59.7839611Z",
+  "enrollmentStatusScreenSettings": null,
+  "extractHardwareHash": false,
+  "hardwareHashExtractionEnabled": false,
+  "deviceNameTemplate": "tpg-s-%SERIAL%",
+  "deviceType@odata.type": "#microsoft.graph.windowsAutopilotDeviceType",
+  "deviceType": "windowsPc",
+  "enableWhiteGlove": false,
+  "preprovisioningAllowed": false,
+  "roleScopeTagIds@odata.type": "#Collection(String)",
+  "roleScopeTagIds": [
+    "0"
+  ],
+  "managementServiceAppId": null,
+  "outOfBoxExperienceSettings": {
+    "@odata.type": "#microsoft.graph.outOfBoxExperienceSettings",
+    "hidePrivacySettings": true,
+    "hideEULA": true,
+    "userType@odata.type": "#microsoft.graph.windowsUserType",
+    "userType": "standard",
+    "deviceUsageType@odata.type": "#microsoft.graph.windowsDeviceUsageType",
+    "deviceUsageType": "shared",
+    "skipKeyboardSelectionPage": false,
+    "hideEscapeLink": true
+  },
+  "outOfBoxExperienceSetting": {
+    "@odata.type": "#microsoft.graph.outOfBoxExperienceSetting",
+    "privacySettingsHidden": true,
+    "eulaHidden": true,
+    "userType@odata.type": "#microsoft.graph.windowsUserType",
+    "userType": "standard",
+    "deviceUsageType@odata.type": "#microsoft.graph.windowsDeviceUsageType",
+    "deviceUsageType": "shared",
+    "keyboardSelectionPageSkipped": false,
+    "escapeLinkHidden": true
+  },
+  "assignments@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile/assignments",
+  "assignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile/assignments/$ref",
+  "assignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile/assignments",
+  "assignedDevices@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile/assignedDevices/$ref",
+  "assignedDevices@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.azureADWindowsAutopilotDeploymentProfile/assignedDevices",
+  "#microsoft.graph.assign": {
+    "title": "microsoft.graph.assign",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeploymentProfiles('b8616ae0-09d4-482d-9e21-8ba9255bb174')/microsoft.graph.windowsAutopilotDeploymentProfile/microsoft.graph.assign"
+  }
+}
