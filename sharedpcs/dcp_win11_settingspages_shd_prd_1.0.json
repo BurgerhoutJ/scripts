@@ -8,7 +8,7 @@
   "creationSource": null,
   "description": "",
   "lastModifiedDateTime@odata.type": "#DateTimeOffset",
-  "lastModifiedDateTime": "2025-11-05T14:51:57.4732567Z",
+  "lastModifiedDateTime": "2026-02-01T10:06:43.7146822Z",
   "name": "dcp_win11_settingspages_shd_prd_1.0",
   "platforms@odata.type": "#microsoft.graph.deviceManagementConfigurationPlatforms",
   "platforms": "windows10",
@@ -32,6 +32,19 @@
   "assignments@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/assignments",
   "assignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/assignments/$ref",
   "assignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/assignments",
+  "assignments": [
+    {
+      "id": "b12211bf-ce34-42c8-9df1-deaa2fedaf24_f4ea8140-17d9-4f66-a8a7-91c3c4776ecf",
+      "source": "direct",
+      "sourceId": "b12211bf-ce34-42c8-9df1-deaa2fedaf24",
+      "target": {
+        "@odata.type": "#microsoft.graph.groupAssignmentTarget",
+        "deviceAndAppManagementAssignmentFilterId": null,
+        "deviceAndAppManagementAssignmentFilterType": "none",
+        "groupId": "f4ea8140-17d9-4f66-a8a7-91c3c4776ecf"
+      }
+    }
+  ],
   "settings@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/settings",
   "settings@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/settings/$ref",
   "settings@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/settings",
@@ -49,7 +62,7 @@
         "simpleSettingValue": {
           "@odata.type": "#microsoft.graph.deviceManagementConfigurationStringSettingValue",
           "settingValueTemplateReference": null,
-          "value": "showonly:workplace;about;dateandtime;windowsupdate"
+          "value": "showonly:workplace;about;dateandtime;windowsupdate;display;personalization"
         }
       },
       "settingDefinitions@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/configurationPolicies('b12211bf-ce34-42c8-9df1-deaa2fedaf24')/settings('0')/settingDefinitions/$ref",

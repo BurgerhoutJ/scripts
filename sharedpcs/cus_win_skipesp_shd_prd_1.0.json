@@ -1,0 +1,85 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+  "@odata.type": "#microsoft.graph.windows10CustomConfiguration",
+  "@odata.id": "deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')",
+  "@odata.editLink": "deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration",
+  "id": "d68fa3b0-c3f9-425c-b2ec-627b36d0e9af",
+  "lastModifiedDateTime@odata.type": "#DateTimeOffset",
+  "lastModifiedDateTime": "2026-02-01T09:41:13.5359806Z",
+  "roleScopeTagIds@odata.type": "#Collection(String)",
+  "roleScopeTagIds": [
+    "0"
+  ],
+  "supportsScopeTags": true,
+  "deviceManagementApplicabilityRuleOsEdition": null,
+  "deviceManagementApplicabilityRuleOsVersion": null,
+  "deviceManagementApplicabilityRuleDeviceMode": null,
+  "createdDateTime@odata.type": "#DateTimeOffset",
+  "createdDateTime": "2026-02-01T09:41:13.5359806Z",
+  "description": null,
+  "displayName": "cus_win_skipesp_shd_prd_1.0",
+  "version": 1,
+  "omaSettings@odata.type": "#Collection(microsoft.graph.omaSetting)",
+  "omaSettings": [
+    {
+      "@odata.type": "#microsoft.graph.omaSettingBoolean",
+      "displayName": "SkipUserStatusPage",
+      "description": null,
+      "omaUri": "./Device/Vendor/MSFT/DMClient/Provider/MS DM Server/FirstSyncStatus/SkipUserStatusPage",
+      "secretReferenceValueId": null,
+      "isEncrypted": false,
+      "value": true
+    }
+  ],
+  "assignments@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/assignments",
+  "assignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/assignments/$ref",
+  "assignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/assignments",
+  "assignments": [
+    {
+      "@odata.type": "#microsoft.graph.deviceConfigurationAssignment",
+      "@odata.id": "deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/assignments('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af_f4ea8140-17d9-4f66-a8a7-91c3c4776ecf')",
+      "@odata.editLink": "deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/assignments('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af_f4ea8140-17d9-4f66-a8a7-91c3c4776ecf')",
+      "id": "d68fa3b0-c3f9-425c-b2ec-627b36d0e9af_f4ea8140-17d9-4f66-a8a7-91c3c4776ecf",
+      "source@odata.type": "#microsoft.graph.deviceAndAppManagementAssignmentSource",
+      "source": "direct",
+      "sourceId": "d68fa3b0-c3f9-425c-b2ec-627b36d0e9af",
+      "intent@odata.type": "#microsoft.graph.deviceConfigAssignmentIntent",
+      "intent": "apply",
+      "target": {
+        "@odata.type": "#microsoft.graph.groupAssignmentTarget",
+        "deviceAndAppManagementAssignmentFilterId": null,
+        "deviceAndAppManagementAssignmentFilterType@odata.type": "#microsoft.graph.deviceAndAppManagementAssignmentFilterType",
+        "deviceAndAppManagementAssignmentFilterType": "none",
+        "groupId": "f4ea8140-17d9-4f66-a8a7-91c3c4776ecf"
+      }
+    }
+  ],
+  "deviceSettingStateSummaries@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceSettingStateSummaries/$ref",
+  "deviceSettingStateSummaries@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceSettingStateSummaries",
+  "deviceStatuses@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceStatuses/$ref",
+  "deviceStatuses@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceStatuses",
+  "deviceStatusOverview@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceStatusOverview/$ref",
+  "deviceStatusOverview@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/deviceStatusOverview",
+  "groupAssignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/groupAssignments/$ref",
+  "groupAssignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/groupAssignments",
+  "userStatuses@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/userStatuses/$ref",
+  "userStatuses@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/userStatuses",
+  "userStatusOverview@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/userStatusOverview/$ref",
+  "userStatusOverview@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.windows10CustomConfiguration/userStatusOverview",
+  "#microsoft.graph.assign": {
+    "title": "microsoft.graph.assign",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+  },
+  "#microsoft.graph.assignedAccessMultiModeProfiles": {
+    "title": "microsoft.graph.assignedAccessMultiModeProfiles",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+  },
+  "#microsoft.graph.windowsPrivacyAccessControls": {
+    "title": "microsoft.graph.windowsPrivacyAccessControls",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+  },
+  "#microsoft.graph.getOmaSettingPlainTextValue": {
+    "title": "microsoft.graph.getOmaSettingPlainTextValue",
+    "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations('d68fa3b0-c3f9-425c-b2ec-627b36d0e9af')/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+  }
+}
