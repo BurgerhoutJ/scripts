@@ -1,0 +1,229 @@
+autoinstall:
+  version: 1
+
+  user-data:
+    users: [""]
+    disable_root: false
+
+  ssh:
+    install-server: no
+
+  storage:
+    layout:
+      name: lvm
+      password: ubuntu   # Need to be equal with the Script, need to be changed from the User
+
+  # keyboard:
+  #   layout: de
+  # locale: en_US
+  # timezone: Europe/Berlin
+  updates: security
+  shutdown: reboot
+
+  # Mandatory Packages for installing the Intune Requierments
+  packages:
+    - curl
+    - git
+    - wget
+    - gpg
+
+  snaps: # (Optional) Install additional apps from this catalog: https://snapcraft.io/store
+    - name: code
+      classic: true
+    - name: postman
+    - name: powershell
+      classic: true
+    - name: sublime-text
+      classic: true
+
+  late-commands:
+###########################################################################
+# Start - LUKS first-boot password-change (GUI, post-login) ───────────────
+###########################################################################
+    #
+    # Approach: two-script design
+    #   luks-change-password-ui.sh   — runs as the logged-in user, shows
+    #                                   zenity dialogs, validates input
+    #   luks-change-password-root.sh — runs as root via sudo (NOPASSWD),
+    #                                   performs the actual cryptsetup call
+    #
+    # Triggered by /etc/xdg/autostart on first desktop login.
+    # Guard file /var/lib/luks-firstboot is removed on success.
+
+    # User-facing UI script
+    - |
+      cat > /target/usr/local/bin/luks-change-password-ui.sh << 'SCRIPT'
+      #!/bin/bash
+
+      # Exit silently if already completed
+      [ ! -f /var/lib/luks-firstboot ] && exit 0
+
+      export DISPLAY="${DISPLAY:-:0}"
+      export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/$(id -u)/bus}"
+
+      # Opening info dialog — user cannot skip this
+      zenity --info \
+        --title="Disk Encryption Setup" \
+        --width=420 \
+        --text="<b>You must set a permanent disk encryption password.</b>\n\nThe installer used a temporary password that must be replaced before this device can be used.\n\nYou cannot skip this step."
+
+      while true; do
+
+        NEW_PASS=$(zenity --password \
+          --title="Set Encryption Password" \
+          --text="Enter your new encryption password (minimum 12 characters):")
+
+        # User closed dialog — re-show info and loop, cannot escape
+        if [ $? -ne 0 ]; then
+          zenity --warning \
+            --title="Required" \
+            --text="Setting an encryption password is required.\nPlease complete this step."
+          continue
+        fi
+
+        if [ ${#NEW_PASS} -lt 12 ]; then
+          zenity --error \
+            --title="Password Too Short" \
+            --text="The password must be at least 12 characters.\nPlease try again."
+          continue
+        fi
+
+        CONFIRM=$(zenity --password \
+          --title="Confirm Encryption Password" \
+          --text="Confirm your new encryption password:")
+
+        if [ $? -ne 0 ]; then
+          continue
+        fi
+
+        if [ "$NEW_PASS" != "$CONFIRM" ]; then
+          zenity --error \
+            --title="Passwords Do Not Match" \
+            --text="The passwords you entered do not match.\nPlease try again."
+          continue
+        fi
+
+        break
+      done
+
+      # Hand off to root script via sudo (NOPASSWD rule, stdin pipe)
+      echo "$NEW_PASS" | sudo /usr/local/bin/luks-change-password-root.sh
+      RESULT=$?
+
+      if [ $RESULT -eq 0 ]; then
+        zenity --info \
+          --title="Encryption Password Set" \
+          --width=380 \
+          --text="<b>Your encryption password has been set successfully.</b>\n\nThis prompt will not appear again."
+
+          gtk-launch intune-portal
+      else
+        zenity --error \
+          --title="Error" \
+          --text="Failed to change the encryption password.\nYou will be prompted again on next login."
+      fi
+      SCRIPT
+
+    - chmod 0755 /target/usr/local/bin/luks-change-password-ui.sh
+
+    # Root script — only called by the UI script via sudo
+    - |
+      cat > /target/usr/local/bin/luks-change-password-root.sh << 'SCRIPT'
+      #!/bin/bash
+
+      # Read new password from stdin (piped from UI script)
+      read -r NEW_PASS
+
+      # Resolve the LUKS backing device
+      LUKS_DEV=$(lsblk -rno NAME,TYPE | awk '$2=="crypt"{print $1}' | head -1)
+      DEVICE=$(cryptsetup status "$LUKS_DEV" 2>/dev/null | awk '/device:/{print $2}')
+
+      if [ -z "$DEVICE" ]; then
+        echo "ERROR: Could not determine LUKS device" >&2
+        exit 1
+      fi
+
+      # Change the LUKS key: use printf '%s' to avoid trailing newline on both
+      # the old key (stdin) and new key (process substitution) — echo appends \n
+      # which gets stored as part of the key, causing boot-time password mismatch.
+      printf '%s' "ubuntu" | cryptsetup luksChangeKey "$DEVICE" <(printf '%s' "$NEW_PASS")
+
+      if [ $? -eq 0 ]; then
+        rm -f /var/lib/luks-firstboot
+        exit 0
+      else
+        exit 1
+      fi
+      SCRIPT
+
+    - chmod 0700 /target/usr/local/bin/luks-change-password-root.sh
+
+    # Sudoers rule — NOPASSWD only for this specific script, nothing else
+    - |
+      cat > /target/etc/sudoers.d/luks-change-password << 'EOF'
+      ALL ALL=(root) NOPASSWD: /usr/local/bin/luks-change-password-root.sh
+      EOF
+
+    - chmod 0440 /target/etc/sudoers.d/luks-change-password
+
+    # Autostart desktop entry — triggers on first GUI login for any user
+    - mkdir -p /target/etc/xdg/autostart
+
+    - |
+      cat > /target/etc/xdg/autostart/luks-change-password.desktop << 'EOF'
+      [Desktop Entry]
+      Type=Application
+      Name=Disk Encryption Setup
+      Comment=Set permanent LUKS encryption password on first login
+      Exec=/usr/local/bin/luks-change-password-ui.sh
+      X-GNOME-Autostart-enabled=true
+      X-GNOME-Autostart-Delay=5
+      NotifyStartup=false
+      EOF
+
+    # Marker file — removed by root script on success
+    - touch /target/var/lib/luks-firstboot
+    ###########################################################################
+    # End - LUKS first-boot password-change (GUI, post-login) ───────────────
+    ###########################################################################
+
+    # ── Disable Ubuntu telemetry prompt ─────────────────────────────────────
+    - curtin in-target --target=/target -- ubuntu-report send no
+
+    # ── Disable GNOME initial setup wizard + Ubuntu Pro prompt ───────────────
+    # Keep the package installed but mark setup as done system-wide.
+    # This is the official enterprise approach — gnome-initial-setup checks
+    # for this file and skips the entire wizard for all users.
+    - mkdir -p /target/etc/gnome-initial-setup
+    - curtin in-target --target=/target -- sh -c 'echo "[pages]" > /etc/gnome-initial-setup/vendor.conf'
+    - curtin in-target --target=/target -- sh -c 'echo "skip=language;keyboard;privacy;software;parental-controls;ubuntu-pro" >> /etc/gnome-initial-setup/vendor.conf'
+    - curtin in-target --target=/target -- systemctl mask ubuntu-advantage-desktop-daemon
+
+    # - mkdir -p /target/etc/skel/.config
+    # - touch /target/etc/skel/.config/gnome-initial-setup-done
+
+    # Also disable Ubuntu Pro background notifications (apt_news, MOTD ads)
+    - curtin in-target --target=/target -- pro config set apt_news=false
+
+    # ── Install Microsoft Intune Portal + Edge ───────────────────────────────
+    - curtin in-target --target=/target -- mkdir -p /tmp/microsoft
+    - curtin in-target --target=/target -- sh -c 'curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft/microsoft.gpg'
+    - curtin in-target --target=/target -- install -o root -g root -m 644 /tmp/microsoft/microsoft.gpg /usr/share/keyrings/microsoft.gpg
+
+    - curtin in-target --target=/target -- sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/24.04/prod noble main" > /etc/apt/sources.list.d/microsoft-ubuntu-noble-prod.list'
+
+    - curtin in-target --target=/target -- sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
+
+    - curtin in-target --target=/target -- apt-get update
+    - curtin in-target --target=/target -- apt-get install -y intune-portal microsoft-edge-stable
+
+    - rm -f /target/etc/apt/sources.list.d/microsoft-edge-dev.list
+    - rm -f /target/etc/apt/trusted.gpg.d/microsoft.gpg
+    - curtin in-target --target=/target -- rm -rf /tmp/microsoft
+
+    # Remove bloatware
+    - curtin in-target --target=/target -- apt-get purge -y libreoffice* remmina* transmission*
+
+    # Clean up
+    - curtin in-target --target=/target -- apt-get autoremove -y
+    - curtin in-target --target=/target -- apt-get clean
