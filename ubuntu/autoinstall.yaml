@@ -16,7 +16,7 @@ autoinstall:
   # keyboard:
   #   layout: de
   # locale: en_US
-  timezone: Europe/Amsterdam
+  # timezone: Europe/Amsterdam
   updates: security
   shutdown: reboot
 
