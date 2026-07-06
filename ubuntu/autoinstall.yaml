@@ -13,10 +13,11 @@ autoinstall:
       name: lvm
       password: ubuntu   # Need to be equal with the Script, need to be changed from the User
 
-  # keyboard:
-  #   layout: de
-  # locale: en_US
-  # timezone: Europe/Berlin
+  keyboard:
+    layout: us
+    variant: intl
+  locale: en_US.UTF-8
+  timezone: Europe/Amsterdam
   updates: security
   shutdown: reboot
 
