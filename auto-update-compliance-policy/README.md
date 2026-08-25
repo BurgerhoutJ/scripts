@@ -90,11 +90,12 @@ Intune portal).
    `IntuneOSVersion-AutoApplyPlatforms` (e.g. start with just `ios,macos`,
    add `windows,android` later once you've watched a few Windows dry runs).
 
-7. **Schedule**: Automation Account > Schedules, create one (weekly is
-   reasonable — OS releases don't happen daily), link it to the runbook with
-   parameter `Apply = true`. The Automation Variable whitelist is still the
-   actual write gate, so linking with `Apply = true` is safe even before
-   you've whitelisted every platform.
+7. **Schedule**: `deploy.sh` creates a weekly schedule (Mondays 06:00 UTC)
+   but does **not** link it to the runbook. In the portal, go to **Automation
+   Account > Runbooks > select the runbook > Link to schedule**, choose the
+   schedule, and set parameter `Apply` = `true`. The Automation Variable
+   whitelist is still the actual write gate, so linking with `Apply = true` is
+   safe even before you've whitelisted every platform.
 
 ## Rollback
 
