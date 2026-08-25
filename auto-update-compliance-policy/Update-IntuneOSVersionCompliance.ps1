@@ -185,16 +185,23 @@ if ($appPlatforms.Count -gt 0) {
                 continue
             }
             $desiredMin = $baselines['ios']
-            if ($app.minimumRequiredOsVersion -eq $desiredMin) {
-                Write-Output "OK (no change) APP: '$($app.displayName)' [ios] minimumRequiredOsVersion=$desiredMin"
+            $patchBody = @{}
+            foreach ($prop in @('minimumWarningOsVersion', 'minimumRequiredOsVersion', 'minimumWipeOsVersion')) {
+                if ($app.$prop -and $app.$prop -ne $desiredMin) {
+                    $patchBody[$prop] = $desiredMin
+                }
+            }
+            if ($patchBody.Count -eq 0) {
+                Write-Output "OK (no change) APP: '$($app.displayName)' [ios] conditional launch OS versions already at $desiredMin"
                 continue
             }
             $appChanged++
             $willApply = $Apply -and ('ios' -in $autoApplyPlatforms)
             $label = if ($willApply) { 'APPLYING' } else { 'DRY RUN' }
-            Write-Output "$label APP '$($app.displayName)' [ios] ($($app.id)): minimumRequiredOsVersion '$($app.minimumRequiredOsVersion)' -> '$desiredMin'"
+            $changes = ($patchBody.GetEnumerator() | ForEach-Object { "$($_.Key) '$($app.($_.Key))' -> '$($_.Value)'" }) -join ', '
+            Write-Output "$label APP '$($app.displayName)' [ios] ($($app.id)): $changes"
             if ($willApply) {
-                $body = @{ minimumRequiredOsVersion = $desiredMin } | ConvertTo-Json -Compress
+                $body = $patchBody | ConvertTo-Json -Compress
                 Invoke-RestMethod -Method Patch `
                     -Uri "https://graph.microsoft.com/v1.0/deviceAppManagement/iosManagedAppProtections/$($app.id)" `
                     -Headers @{ Authorization = "Bearer $token"; 'Content-Type' = 'application/json' } `
@@ -212,20 +219,28 @@ if ($appPlatforms.Count -gt 0) {
                 continue
             }
             $desiredMin = $baselines['android']
-            $needsUpdate = ($app.minimumRequiredOsVersion -ne $desiredMin) -or ($app.minimumRequiredPatchVersion -ne $minimumPatchVersion)
-            if (-not $needsUpdate) {
-                Write-Output "OK (no change) APP: '$($app.displayName)' [android] minimumRequiredOsVersion=$desiredMin minimumRequiredPatchVersion=$minimumPatchVersion"
+            $patchBody = @{}
+            foreach ($prop in @('minimumWarningOsVersion', 'minimumRequiredOsVersion', 'minimumWipeOsVersion')) {
+                if ($app.$prop -and $app.$prop -ne $desiredMin) {
+                    $patchBody[$prop] = $desiredMin
+                }
+            }
+            foreach ($prop in @('minimumWarningPatchVersion', 'minimumRequiredPatchVersion', 'minimumWipePatchVersion')) {
+                if ($app.$prop -and $app.$prop -ne $minimumPatchVersion) {
+                    $patchBody[$prop] = $minimumPatchVersion
+                }
+            }
+            if ($patchBody.Count -eq 0) {
+                Write-Output "OK (no change) APP: '$($app.displayName)' [android] conditional launch versions already current"
                 continue
             }
             $appChanged++
             $willApply = $Apply -and ('android' -in $autoApplyPlatforms)
             $label = if ($willApply) { 'APPLYING' } else { 'DRY RUN' }
-            Write-Output "$label APP '$($app.displayName)' [android] ($($app.id)): minimumRequiredOsVersion '$($app.minimumRequiredOsVersion)' -> '$desiredMin', minimumRequiredPatchVersion '$($app.minimumRequiredPatchVersion)' -> '$minimumPatchVersion'"
+            $changes = ($patchBody.GetEnumerator() | ForEach-Object { "$($_.Key) '$($app.($_.Key))' -> '$($_.Value)'" }) -join ', '
+            Write-Output "$label APP '$($app.displayName)' [android] ($($app.id)): $changes"
             if ($willApply) {
-                $body = @{
-                    minimumRequiredOsVersion   = $desiredMin
-                    minimumRequiredPatchVersion = $minimumPatchVersion
-                } | ConvertTo-Json -Compress
+                $body = $patchBody | ConvertTo-Json -Compress
                 Invoke-RestMethod -Method Patch `
                     -Uri "https://graph.microsoft.com/v1.0/deviceAppManagement/androidManagedAppProtections/$($app.id)" `
                     -Headers @{ Authorization = "Bearer $token"; 'Content-Type' = 'application/json' } `
