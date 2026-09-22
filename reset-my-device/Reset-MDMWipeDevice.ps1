@@ -2,6 +2,12 @@
 # Created by Jeroen Burgerhout (@BurgerhoutJ)
 #
 # Changelog (most recent on top):
+#   2026-09-22 - Added -CacheToDisk to the Invoke-AsCurrentUser call. The
+#                form scriptblock (embedded icon + full layout) was too long
+#                to base64-encode onto the command line, so RunAsUser errored
+#                with "The encoded script is longer than the command line
+#                parameter limit." -CacheToDisk writes it to a temp .ps1 in
+#                the user's session instead.
 #   2026-09-22 - Replaced ServiceUI.exe with the RunAsUser module
 #                (Invoke-AsCurrentUser) to show the confirmation window from
 #                a SYSTEM-context install. ServiceUI.exe was returning exit
@@ -251,7 +257,10 @@ try {
             exit 1
         }
 
-        $dialogOutput = Invoke-AsCurrentUser -ScriptBlock $formScriptBlock -CaptureOutput -UseWindowsPowerShell -ErrorVariable runAsUserError -ErrorAction SilentlyContinue
+        # -CacheToDisk: the form scriptblock (with the embedded icon) is too
+        # long to base64-encode onto the command line (RunAsUser's default),
+        # so write it to a temp .ps1 in the user's session instead.
+        $dialogOutput = Invoke-AsCurrentUser -ScriptBlock $formScriptBlock -CaptureOutput -UseWindowsPowerShell -CacheToDisk -ErrorVariable runAsUserError -ErrorAction SilentlyContinue
         if ($runAsUserError) {
             Write-Log "ERROR from RunAsUser: $($runAsUserError -join ' | ')"
         }
