@@ -1,4 +1,13 @@
 <#
+.SYNOPSIS
+    Detects whether Outlook New is configured correctly.
+.DESCRIPTION
+    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+.NOTES
+    Script: Detect-OutlookNew.ps1
+#>
+
+<#
 Version: 1.0
 Author: 
 - Jeroen Burgerhout (burgerhout.org)
