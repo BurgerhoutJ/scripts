@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Detects whether Local Administrators is configured correctly.
+    Detects administrator membership for the last logged-on SAM user.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Reads LastLoggedOnSAMUser from LogonUI and checks the local Administrators group listing.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify devices where the last logged-on user is not a local administrator.
+    What it does: Returns exit code 0 when the user appears in the group listing; otherwise returns exit code 1.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-LocalAdministrators.ps1
 #>

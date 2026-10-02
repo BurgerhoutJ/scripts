@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Detects whether Win 11 Teams Client Consumer is configured correctly.
+    Detects whether consumer Microsoft Teams is installed for the current user.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Searches the current user's AppX packages for names matching *MicrosoftTeams*.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify users with the unwanted consumer Microsoft Teams package installed.
+    What it does: Returns exit code 1 when the package is found; otherwise returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: Yes
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-Win11TeamsClientConsumer.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Detect-Win11TeamsClientConsumer
-Description: Script detects the new Microsoft Teams consumer app on Windows 11.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: Yes
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 if (Get-AppxPackage -Name *MicrosoftTeams*) {
 write-host "Microsoft Consumer Teams found."

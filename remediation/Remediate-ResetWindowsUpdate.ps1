@@ -1,23 +1,25 @@
 <#
 .SYNOPSIS
-    Remediates the Reset Windows Update setting on the local device.
+    Resets Windows Update cache folders and restarts update services.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Stops update-related services and renames SoftwareDistribution and catroot2 to backup folders.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Reset Windows Update components on targeted devices experiencing update issues.
+    What it does: Replaces existing backup folders, renames update caches, restarts services, invokes wuauclt /updatenow, and returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-ResetWindowsUpdate.ps1
+    Original author: JOrgen Nilsson (ccmexec.com)
+    Does not verify whether the update request succeeds.
 #>
 
-<#
-Version: 1.0
-Author: 
-- JOrgen Nilsson (ccmexec.com)
-Script: ResetWindowsUpdateRemediation.ps1
-Description:
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run as: Admin
-Context: 64 Bit
-#> 
 $DependentService = Get-Service -name cryptsvc -DependentServices |Where-Object status -eq Started
 if ($DependentService) {Stop-Service $DependentService -Force} 
 Stop-Service -Name wuauserv 

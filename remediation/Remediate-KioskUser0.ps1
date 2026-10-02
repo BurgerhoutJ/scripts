@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Remediates the Kiosk User 0 setting on the local device.
+    Configures kioskUser0 automatic logon settings.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Updates the machine-level Winlogon values used by the kioskUser0 configuration.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Apply consistent automatic logon settings to managed kiosk devices.
+    What it does: Sets AutoAdminLogon to 1, DefaultUserName to kioskUser0, DisableLockWorkstation to 1, and IsConnectedAutoLogon to 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-KioskUser0.ps1
 #>

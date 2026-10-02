@@ -1,23 +1,21 @@
 <#
 .SYNOPSIS
-    Remediates the MSEdge Icon setting on the local device.
+    Removes the Microsoft Edge shortcut from the public desktop.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Removes Microsoft Edge.lnk from the public desktop without uninstalling Microsoft Edge.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Remove the unwanted shared Microsoft Edge desktop shortcut from managed Windows devices.
+    What it does: Deletes the public desktop shortcut using Remove-Item.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-MSEdgeIcon.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Remove-MSEdgeIcon
-Description: Script removes the MS Edge Icon from the desktop.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: No
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 Remove-Item -Path "C:\Users\Public\Desktop\Microsoft Edge.lnk"

@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Remediates the Ntp Server setting on the local device.
+    Configures Dutch NTP pool servers and the Western European time zone.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Updates Windows Time to use a manual NTP peer list and configures the device time zone.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Apply consistent time synchronization and time-zone settings to managed Windows devices.
+    What it does: Stops W32Time, configures Dutch NTP pool peers, sets automatic startup and W. Europe Standard Time, then starts W32Time.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-NtpServer.ps1
 #>

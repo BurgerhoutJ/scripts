@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Remediates the AUNo Auto Update setting on the local device.
+    Removes the Windows Update NoAutoUpdate policy value.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Removes NoAutoUpdate from the machine-level Windows Update AU policy when present.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Remove the NoAutoUpdate override from managed Windows devices.
+    What it does: Checks for NoAutoUpdate and deletes the registry value if it exists.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-AUNoAutoUpdate.ps1
 #>

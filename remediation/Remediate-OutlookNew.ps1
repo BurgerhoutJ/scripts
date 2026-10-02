@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Remediates the Outlook New setting on the local device.
+    Removes the new Outlook for the current user.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Finds and removes the current user's AppX packages matching *OutlookForWindows*.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Remove the unwanted new Outlook application from managed Windows user profiles.
+    What it does: Runs Remove-AppxPackage for matching packages and reports success or an error.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: Yes
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-OutlookNew.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Remove-OutlookNew
-Description: Script removes the new Microsoft Outlook app on Windows 11 23H2.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: Yes
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 try{
     Get-AppxPackage -Name *OutlookForWindows* | Remove-AppxPackage -ErrorAction stop

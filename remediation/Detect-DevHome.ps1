@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Detects whether Dev Home is configured correctly.
+    Detects whether Dev Home is installed for the current user.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Searches the current user's AppX packages for names matching *DevHome*.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify users with the unwanted Dev Home application installed.
+    What it does: Returns exit code 1 when Dev Home is found; otherwise returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: Yes
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-DevHome.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Detect-DevHome
-Description: Script detects the new Dev Home app on Windows 11 23H2.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: Yes
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 if (Get-AppxPackage -Name *DevHome*) {
 write-host "Dev Home found."

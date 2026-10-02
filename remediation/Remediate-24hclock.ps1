@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Remediates the 24 hclock setting on the local device.
+    Configures 24-hour time formats for the current user.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Updates the current user's short and long time formats in the registry.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Use consistent 24-hour time formats on managed Windows devices.
+    What it does: Sets sShortTime to HH:mm and sTimeFormat to HH:mm:ss, then returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: Yes
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-24hclock.ps1
 #>

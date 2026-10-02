@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Detects whether Kiosk User 0 is configured correctly.
+    Detects whether kioskUser0 automatic logon settings are configured.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Checks four machine-level Winlogon values used by the kioskUser0 configuration.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify kiosk devices whose automatic logon settings do not match the expected configuration.
+    What it does: Returns exit code 0 when all four Winlogon values match; otherwise returns exit code 1.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-KioskUser0.ps1
 #>

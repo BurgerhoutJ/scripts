@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Detects whether MSEdge Icon is configured correctly.
+    Detects the Microsoft Edge shortcut on the public desktop.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Checks for Microsoft Edge.lnk in the public desktop folder.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify devices with the unwanted shared Microsoft Edge desktop shortcut.
+    What it does: Returns exit code 1 when the shortcut exists; otherwise returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-MSEdgeIcon.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Detect-MSEdgeIcon
-Description: Script removes the MS Edge Icon from the desktop.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: No
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 $msedge= Get-Item -Path "C:\Users\Public\Desktop\Microsoft Edge.lnk"
 

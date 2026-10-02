@@ -1,8 +1,19 @@
 <#
 .SYNOPSIS
-    Remediates the Local Administrators setting on the local device.
+    Adds the last logged-on SAM user to local Administrators.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Reads LastLoggedOnSAMUser from LogonUI and requests local administrator membership for that user.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Grant local administrator membership to the last logged-on user on targeted devices.
+    What it does: Runs net localgroup Administrators with the recorded SAM user and the /add option.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-LocalAdministrators.ps1
 #>

@@ -1,23 +1,23 @@
 <#
 .SYNOPSIS
-    Detects whether Reset Windows Update is configured correctly.
+    Triggers a Windows Update reset through Intune remediation.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Always requests the paired Windows Update reset remediation without checking device state.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Trigger the Windows Update reset procedure on targeted devices.
+    What it does: Writes a trigger message and returns exit code 1 on every run, including post-detection.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-ResetWindowsUpdate.ps1
+    Original author: JOrgen Nilsson (ccmexec.com)
 #>
-
-<#
-Version: 1.0
-Author: 
-- JOrgen Nilsson (ccmexec.com)
-Script: ResetWindowsUpdateDetection.ps1
-Description:
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run as: Admin
-Context: 64 Bit
-#> 
 
 # Always trigger
 Write-Host "Script will always be triggered"

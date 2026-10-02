@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Detects whether Adobe Aanbiedingen is configured correctly.
+    Detects the Adobe Aanbiedingen shortcut in the shared Start menu.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Checks for Aanbiedingen.lnk in the all-users Start menu Programs folder.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify devices with the unwanted Adobe offers shortcut.
+    What it does: Returns exit code 1 when the shortcut exists; otherwise returns exit code 0.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-AdobeAanbiedingen.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Detect-AdobeAanbiedingen
-Description: Script removes the AdobeAanbiedingen shortcut.
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: No
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 $msedge= Get-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Aanbiedingen.lnk"
 

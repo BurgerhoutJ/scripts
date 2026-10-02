@@ -1,10 +1,21 @@
 <#
 .SYNOPSIS
-    Detection script to detect if the desired local admin is available on the device
+    Detects whether the WEBLAPS local account exists.
 .DESCRIPTION
-    This detection script is part of a remediation for creating a local administrator
+    Checks local user accounts for the configured WEBLAPS account name.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify devices missing the local account intended for LAPS management.
+    What it does: Returns exit code 0 when WEBLAPS exists; otherwise returns exit code 1.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .EXAMPLE
-    Creates a local administrator with a specific name and random password, this can be used with LAPS where the password will be set through a policy
+    Checks for WEBLAPS without creating an account or changing group membership.
 .NOTES
     Filename: Detect-LAPSAccount.ps1
     Author: Jeroen Ebus (https://manage-the.cloud) 

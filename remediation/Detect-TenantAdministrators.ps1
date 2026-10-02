@@ -1,24 +1,22 @@
 <#
 .SYNOPSIS
-    Detects whether Tenant Administrators is configured correctly.
+    Detects whether the configured Entra ID SIDs are local administrators.
 .DESCRIPTION
-    Checks the current device state and exits 0 when compliant; otherwise exits 1 so policy enforcement can run the remediation script.
+    Uses ADSI to compare local Administrators member names with two configured Entra ID SIDs.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Identify devices missing the configured tenant administrator entries in local Administrators.
+    What it does: Returns exit code 0 when both SID strings are found; otherwise returns exit code 1.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Detect-TenantAdministrators.ps1
 #>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Detect-TenantAdministrators
-Description: Detection Script: Check if two Entra ID SIDs are in the Local Administrators group
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: Yes
-Enforce script signature check: No
-Run script in 64-bit PowerShell: Yes
-#> 
 
 # Define the Entra ID SIDs to check
 # Replace these with your actual Entra ID SIDs

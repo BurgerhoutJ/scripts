@@ -1,23 +1,21 @@
 <#
 .SYNOPSIS
-    Remediates the Tenant Administrators setting on the local device.
+    Adds the configured Entra ID SIDs to local Administrators.
 .DESCRIPTION
-    Applies the required change and exits successfully when the setting is corrected or already compliant.
+    Uses ADSI to check two configured Entra ID SIDs and add missing entries to local Administrators.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Apply the configured tenant administrator membership to targeted Windows devices.
+    What it does: Checks each configured SID string and adds entries that are not found in the group listing.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .NOTES
     Script: Remediate-TenantAdministrators.ps1
-#>
-
-<#
-Version: 1.0
-Author: 
-- Jeroen Burgerhout (burgerhout.org)
-Script: Remediate-TenantAdministrators
-Description: Remediation Script: Add two Entra ID SIDs to the Local Administrators group if they are not already members
-Hint: This is a community script. There is no guarantee for this. Please check thoroughly before running.
-Version 1.0: Init
-Run this script using the logged-on credentials: Yes
-Enforce script signature check: No
-Run script in64-bit PowerShell: Yes
 #>
 
 # Define the Entra ID SIDs to add

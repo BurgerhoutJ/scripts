@@ -1,10 +1,21 @@
 <#
 .SYNOPSIS
-    Remediation script to detect if the desired local admin is available on the device
+    Creates the WEBLAPS local account when it is missing.
 .DESCRIPTION
-    This is the remediation script for creating a local administrator
+    Creates the configured local account with a generated password for subsequent LAPS management.
+
+    Creator: Jeroen Burgerhout
+    Date: 2026-10-02
+    Why: Ensure the local account intended for LAPS management exists on managed Windows devices.
+    What it does: Creates WEBLAPS if absent, returning exit code 0 on creation or 1 on a caught creation error.
+
+    Intune settings:
+      - Run this script using the logged-on credentials: No
+      - Enforce script signature check: No
+      - Run script in 64-bit PowerShell host: Yes
+
 .EXAMPLE
-    Creates a local administrator with a specific name and random password, this can be used with LAPS where the password will be set through a policy
+    Creates WEBLAPS with a generated password; does not configure LAPS policy or administrator group membership.
 .NOTES
     Filename: Remediate-LAPSAccount.ps1
     Author: Jeroen Ebus (https://manage-the.cloud) 
